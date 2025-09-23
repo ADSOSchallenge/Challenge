@@ -1,31 +1,33 @@
-
-import App from './App.tsx'
-import EditarCadastros from './routes/EditarCadastros/index.tsx'
-import { createRoot } from 'react-dom/client';
-import Error from './routes/Error/index.tsx';
-import Home from './routes/Home/index.tsx';
-import Cadastro from './routes/Cadastro/index.tsx';
-import { createBrowserRouter, RouterProvider} from 'react-router-dom';
-
-
-
-
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import App from "./App";
+import ErrorPage from "./routes/Error"; 
+import Home from "./routes/Home";
+import Integrantes from "./routes/Integrantes";
+import Cadastro from "./routes/Cadastro";
+import EditarCadastros from "./routes/EditarCadastros";
+import Faq from "./routes/Faq";
+import Contato from "./routes/Contato";
+import { createRoot } from "react-dom/client";
+import { StrictMode } from "react";
 
 const router = createBrowserRouter([
   {
-    path:"/", element: <App/>, errorElement: <Error/>, children:[
-      {path:"/", elemen: <Home/>},
-      {path:"/integrantes", element: <Integrantes/>},
-      {path:"/cadastro", element: <Cadastro/>},
-      {path:"/editar/cadastros/:id", element: <EditarCadastros/>},
-      {path:"/faq", element: <Faq/>},
-      {path:"/contato", element: <Contato/>}
-    ]
-  }
+    path: "/",
+    element: <App />,
+    errorElement: <ErrorPage />,
+    children: [
+      { path: "/", element: <Home /> },
+      { path: "integrantes", element: <Integrantes /> },
+      { path: "cadastro", element: <Cadastro /> },
+      { path: "editar/cadastros/:id", element: <EditarCadastros /> },
+      { path: "faq", element: <Faq /> },
+      { path: "contato", element: <Contato /> },
+    ],
+  },
 ]);
 
-createRoot(document.getElementById('root')!).render(
+createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <RouterProvider router={router} />
-  </StrictMode>,
-)
+  </StrictMode>
+);

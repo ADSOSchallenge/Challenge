@@ -1,5 +1,15 @@
 import { useEffect } from "react";
+import { useForm, type SubmitHandler } from "react-hook-form";
+import { useNavigate, useParams } from "react-router-dom";
 const URL_API = import.meta.env.VITE_URL_API_CADASTROS;
+interface TipoCadastro {
+  id?: string;
+  nome: string;
+  cpf: string;
+  email: string;
+  senha: string;
+  tipo: string;
+}
 
 export default function EditarCadastros() {
 
@@ -37,54 +47,38 @@ export default function EditarCadastros() {
   }, [id, setValue]);
 
 
-  const onSubmit:SubmitHandler<TipoCadastro> = dados =>{
-
-    const atualizaProduto = async ()=>{
-      await fetch(`${URL_API}/${id}`,{
-        method:"PUT",
-        headers:{
-          "Content-Type":"application/json"
-        },
-        body: JSON.stringify(dados)
-      });
-    }
-
-    atualizaProduto();
+  const onSubmit: SubmitHandler<TipoCadastro> = async (dados) => {
+  try {
+    await fetch(`${URL_API}/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(dados),
+    });
     alert("Seu cadastro foi atualizado!");
     navigate("/cadastros");
+  } catch (error) {
+    console.error(error);
+    alert("Erro ao atualizar cadastro!");
   }
+};
 
 
-  return (
-    <main>
-      <h1>Editar Cadastros</h1>
-
-
-      <div>
-        <form onSubmit={handleSubmit(onSubmit)} className="mx-auto max-w-md space-y-4 rounded-xl border border-gray-200 bg-white p-6 shadow">
-          <h2 className="text-lg font-semibold">Cadastrando Usuário</h2>
-             <input type="hidden" {...register("id")}/>
-         
-          <div>
-            <label htmlFor="nome" className="block text-sm font-medium text-gray-700">Nome</label>
-            <input
-              id="nome"
-              type="text"
-              {...register("nome",{required:true, maxLength:220})}
-              className="mt-1 w-full rounded-lg border border-gray-300 px-3 py-2 outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
-              placeholder="Ex.: Fulano"
-            />
-          </div>
-
-          <div className="flex justify-end gap-2 pt-2">
-            <button type="submit" className="rounded-lg bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700 focus:ring-2 focus:ring-blue-300">
-              Editar
-            </button>
-          </div>
-        </form>
-      </div>
-
-
-    </main>
-  );
+return (
+  <main>
+  <h1>Editar Cadastro</h1>
+  <form onSubmit={handleSubmit(onSubmit)}>
+    <input {...register("nome")} placeholder="Nome" />
+    <input {...register("cpf")} placeholder="CPF" />
+    <input {...register("email")} placeholder="Email" />
+    <input {...register("senha")} placeholder="Senha" type="password" />
+    <select {...register("tipo")}>
+      <option value="admin">Admin</option>
+      <option value="user">User</option>
+    </select>
+    <button type="submit">Atualizar</button>
+  </form>
+</main>
+);
 }
+
+
