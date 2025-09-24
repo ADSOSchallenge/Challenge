@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Edit as Editar } from "lucide-react"; // se quiser um ícone bonito
+import { Edit as Editar } from "lucide-react"; 
 
 type TipoCadastro = {
   nome: string;

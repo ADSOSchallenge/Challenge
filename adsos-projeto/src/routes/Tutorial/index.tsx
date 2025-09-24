@@ -1,0 +1,75 @@
+export default function Tutorial() {
+  document.title = "Tutorial";
+
+
+  return (
+
+
+<main>
+        <article>
+            <section>
+                <h2>Bem-vindo ao tutorial!</h2>
+                <p>Está com dificuldades para acessar o aplicativo e sua teleconsulta? Neste tutorial, vamos te mostrar,
+                    de forma clara e fácil, como abrir o aplicativo do Hospital das Clínicas e acessar sua teleconsulta
+                    de maneira simples e sem complicações!</p>
+            </section>
+
+            <section id="tutorial">
+                <ul>
+                    <li>
+                        <h2>1. Acessando o Portal do Paciente</h2>
+                        <p>Para começar, é necessário acessar o Portal do Paciente. O processo varia de acordo com o
+                            tipo de dispositivo que você utiliza:</p>
+                        <p>- Para Android: baixe o aplicativo na <a
+                                href="https://play.google.com/store/apps/details?id=com.netihc.portaldopaciente"
+                                target="_blank"
+                                aria-label="Baixar o aplicativo Portal do Paciente para Android na Google Play Store">Google
+                                Play Store</a>.</p>
+                        <p>- Para iPhone e iOS: acesse a <a
+                                href="https://apps.apple.com/br/app/portal-do-paciente-hc/id1572694502" target="_blank"
+                                aria-label="Baixar o aplicativo Portal do Paciente para iPhone na App Store">App
+                                Store</a>.</p>
+                    </li>
+
+                    <li>
+                        <h2>2. Criando sua senha de acesso</h2>
+                        <p>Antes de utilizar o Portal do Paciente pela primeira vez, você precisa criar uma senha de
+                            acesso.</p>
+                        <p>Após abrir o aplicativo, clique na opção "Cadastrar Senha" e siga as instruções na tela para
+                            definir sua senha.</p>
+                    </li>
+
+                    <li>
+                        <h2>3. Criando sua conta</h2>
+                        <p>Depois de digitar seu CPF e data de nascimento, o Portal do Paciente irá procurar seus dados
+                            no sistema do Complexo HCFMUSP.</p>
+                        <p>Se o sistema encontrar seu registro, será exibida uma parte do seu nome para confirmação.</p>
+                    </li>
+
+                    <li>
+                        <h2>4. Acessando sua conta</h2>
+                        <p>Depois de concluir o cadastro, você já pode entrar no Portal do Paciente.</p>
+                        <p>Basta digitar seu CPF e a senha que você criou na etapa anterior, e em seguida clicar no
+                            botão "Acessar".</p>
+                    </li>
+
+                    <li>
+                        <h2>5. Aceitar o Termo de Consentimento</h2>
+                        <p>Caso seja sua primeira teleconsulta, será necessário aceitar o Termo de Consentimento, que
+                            aparecerá automaticamente na tela ao agendar uma consulta.</p>
+                    </li>
+
+                    <li>
+                        <h2>6. Entrando na Teleconsulta</h2>
+                        <p>Ao clicar em "Entrar na Teleconsulta", você será encaminhado para a Sala de Espera. Quando o
+                            médico estiver pronto, a tela será atualizada e você verá a opção para entrar.</p>
+                        <p>Basta clicar em "Entrar na Teleconsulta" novamente para iniciar a consulta.</p>
+                    </li>
+                </ul>
+
+            </section>
+        </article>
+    </main>
+
+ );
+}
