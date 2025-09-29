@@ -6,13 +6,6 @@ export default function Faq() {
     <header>
         <h1>FAQ</h1>
         <nav aria-label="Menu de navegação principal">
-            <ul>
-                <li><a href="../index.html" aria-label="Página inicial">Início</a></li>
-                <li><a href="./integrantes.html" aria-label="Página dos integrantes">Integrantes</a></li>
-                <li><a href="./contato.html" aria-label="Página de contato">Contato</a></li>
-                <li><a href="./tutorial.html" aria-label="Página de tutorial">Tutorial</a></li>
-                <li><a href="./login/login.html" aria-label="Página de login">Login</a></li>
-            </ul>
         </nav>
     </header>    
 

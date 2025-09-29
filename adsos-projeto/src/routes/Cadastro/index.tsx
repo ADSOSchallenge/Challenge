@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { Edit as Editar } from "lucide-react"; 
+import React, { useEffect, useState } from "react";
 
 type TipoCadastro = {
   nome: string;
@@ -10,60 +8,106 @@ type TipoCadastro = {
   tipo: string;
 };
 
-const URL_API = import.meta.env.VITE_URL_API_CADASTROS;
-
 export default function Cadastro() {
   useEffect(() => {
     document.title = "Cadastro";
   }, []);
 
-  const [cadastros, setCadastros] = useState<TipoCadastro[]>([]);
+  const [formData, setFormData] = useState<TipoCadastro>({
+    nome: "",
+    cpf: "",
+    email: "",
+    senha: "",
+    tipo: "",
+  });
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(URL_API);
-        const data = await response.json();
-        setCadastros(data);
-      } catch (error) {
-        console.error("Erro ao buscar cadastros:", error);
-      }
-    };
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
 
-    fetchData();
-  }, []);
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Aqui você pode enviar os dados do formulário para a API ou realizar qualquer outra ação
+    console.log("Dados do cadastro:", formData);
+  };
 
   return (
     <main>
-      <h1>Cadastros</h1>
-      <table className="tblCadastro">
-        <thead>
-          <tr>
-            <th>NOME</th>
-            <th>CPF</th>
-            <th>E-MAIL</th>
-            <th>SENHA</th>
-            <th>TIPO DE USUÁRIO</th>
-            <th>AÇÕES</th>
-          </tr>
-        </thead>
-        <tbody>
-          {cadastros.map((cadastro, index) => (
-            <tr key={index}>
-              <td>{cadastro.nome}</td>
-              <td>{cadastro.cpf}</td>
-              <td>{cadastro.email}</td>
-              <td>{cadastro.senha}</td>
-              <td>{cadastro.tipo}</td>
-              <td>
-                <Link to={`/editar/cadastros/${cadastro.nome}`}>
-                  <Editar className="inline w-4 h-4" />
-                </Link>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <header>
+        <h1>Cadastro</h1>
+      </header>
+
+      <section>
+        <h2>Bem-vindo à página de cadastro</h2>
+        <form id="formCadastro" onSubmit={handleSubmit} aria-label="Formulário de cadastro">
+          <div>
+            <label htmlFor="idNome">Nome:</label>
+            <input
+              type="text"
+              id="idNome"
+              name="nome"
+              placeholder="Digite seu nome..."
+              value={formData.nome}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          
+            <label htmlFor="idCpf">CPF:</label>
+          <div>
+            <label htmlFor="idEmail">Email:</label>
+            <input
+              type="email"
+              id="idEmail"
+              name="email"
+              placeholder="Digite seu email..."
+              value={formData.email}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div>
+            <label htmlFor="idSenha">Senha:</label>
+            <input
+              type="password"
+              id="idSenha"
+              name="senha"
+              placeholder="Digite uma senha de 8 dígitos..."
+              value={formData.senha}
+              onChange={handleChange}
+              required
+              maxLength={8}
+            />
+          </div>
+
+          <div>
+            <label htmlFor="idTipoUsuario">Tipo de Usuário:</label>
+            <select
+              id="idTipoUsuario"
+              name="tipo"
+              value={formData.tipo}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Selecione</option>
+              <option value="medico">Médico</option>
+              <option value="paciente">Paciente</option>
+            </select>
+          </div>
+
+          <button aria-label="Botão cadastro" type="submit">Cadastrar</button>
+        </form>
+      </section>
+
+      <footer>
+        <p id="footerp">Produzido por ADSOS - Copyright 2025 © - Todos os direitos reservados.</p>
+      </footer>
     </main>
   );
 }
