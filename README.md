@@ -1,14 +1,18 @@
 ## 🏥 Challenge 2025 - Hospital das Clínicas - ADSOS
 
 ## 📌 Sobre o Projeto
-Este projeto foi desenvolvido para tornar o acesso ao aplicativo Hospital das Clínicas e suas teleconsultas mais simples e acessível. Seu principal objetivo é oferecer suporte às pessoas que enfrentam dificuldades na utilização de celulares ou aplicativos para acessar serviços de saúde digital, promovendo inclusão digital na área da saúde e facilitando a comunicação entre usuários e o hospital.
 
-Através de uma interface intuitiva, o site permite que pacientes:
-- Consultem respostas para perguntas frequentes;
-- Insiram seus dados para facilitar o contato ou obter suporte;
-- Acessem um tutorial prático sobre como utilizar o aplicativo;
-- Conheçam os desenvolvedores do projeto e encontrem seus perfis no GitHub e LinkedIn para dúvidas ou sugestões.
-- Logem em uma conta ADSOS para ver e agendar consultas e deixar feedbacks.
+Este projeto foi desenvolvido para **facilitar o acesso ao aplicativo do Hospital das Clínicas** e às suas teleconsultas, oferecendo uma experiência simples, intuitiva e inclusiva para todos os usuários.
+O objetivo principal é **auxiliar pessoas com dificuldade no uso de celulares ou aplicativos**, promovendo **inclusão digital na área da saúde** e tornando a comunicação entre pacientes e hospital **mais rápida, prática e eficiente**.
+O site conta com interface organizada e moderna, construída com **React, Vite e Tailwind CSS**, e oferece recursos como:
+- **Consulta rápida de perguntas frequentes (FAQ)** para esclarecer dúvidas comuns sobre o aplicativo e os serviços do hospital.  
+- **Registro de informações pessoais**, facilitando o contato do hospital com o paciente.  
+- **Tutorial passo a passo** sobre como utilizar o aplicativo.  
+- **Página Sobre o Hospital das Clínicas**: apresenta a instituição, seu histórico e propósito.  
+- **Página Integrantes**: apresenta a equipe responsável pelo projeto, com links para GitHub e LinkedIn.  
+- **Sistema de login ADSOS**, permitindo que pacientes autenticados visualizem a agenda de consultas, realizem agendamentos e enviem feedbacks sobre o atendimento.  
+- **Componentes reutilizáveis**: `Cabecalho`, `Menu` e `Footer`.  
+- **Design responsivo**, adaptado para diferentes dispositivos, com foco em acessibilidade.
 
 ---
 
@@ -49,6 +53,21 @@ O projeto está organizado dentro da pasta **Sprint1**, contendo diferentes dire
 
 - **README.md** → READ.ME do projeto
 
+
+## React + Vite + Typescript
+
+**Assets/**: A pasta assets/ armazena imagens, ícones e CSS global.
+
+**Components/**: O projeto possui três componentes reutilizáveis: Cabecalho, Menu e Footer.
+
+**Routes/**: Cada página tem sua própria pasta com index.jsx, facilitando manutenção e organização.
+
+**CSS/**: O Tailwind CSS é usado junto com geral.css para estilização global.
+
+- `App.jsx` controla todas as rotas do projeto.
+
+- `main.jsx` renderiza o App no DOM.
+
 ---
 
 ## 🚀 Tecnologias Utilizadas
@@ -56,6 +75,11 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias:
 - **HTML** – Para a estruturação das páginas do site.
 - **CSS** – Para a estilização e design visual do projeto.
 - **JavaScript** – Para adicionar interatividade e funcionalidades dinâmicas.
+- **React** - Para criar interfaces modernas e interativas.
+- **Bootstrap** - Para criar interfaces responsivas rapidamente.
+- **Tailwind CSS** - Para construir designs customizados.
+- **TypeScript** - Para tornar o código mais robusto e fácil de dar manutenção.
+- **Vite** - Para transformar o código do desenvolvedor em algo que o navegador pode executar
 
 ---
 
@@ -67,4 +91,4 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias:
 ---
 
 ## 🔗 Link do Repositório
-O link do repositório é: [ADSOS Challenge - Sprint 1](https://github.com/ADSOSchallenge/Sprint1.git)
+O link do repositório é: https://github.com/ADSOSchallenge/Challenge.git
