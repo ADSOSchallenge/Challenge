@@ -24,7 +24,7 @@ export default function Integrantes() {
           <section className="mb-12">
             <h2 className="section-title mb-4">Sobre nós!</h2>
             <p className="text-black text-left mb-6">
-              Olá! Nós somos os integrantes do ADSOS, o projeto que visa diminuir o absenteísmo nas terapias por
+              Olá! Nós somos os integrantes do ADSOS da turma da 1TDSPJ, o projeto que visa diminuir o absenteísmo nas terapias por
               teleatendimento. O grupo é composto por Amandha Yumi, Erick Takeshi e Giovanna Bardella, alunos de
               Análise e Desenvolvimento de Sistemas na FIAP. Clique em uma das fotos ou role a página para saber mais sobre cada um de nós!
             </p>

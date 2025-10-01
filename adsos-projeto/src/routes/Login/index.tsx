@@ -34,30 +34,30 @@ export default function Login() {
     const { cpf, senha } = formData;
 
     if (cpf.length !== 11) {
-      alert('CPF deve conter 11 dígitos.');
+      alert("CPF deve conter 11 dígitos.");
       return;
     }
 
     if (senha.length < 8) {
-      alert('A senha deve ter pelo menos 8 caracteres.');
+      alert("A senha deve ter pelo menos 8 caracteres.");
       return;
     }
 
-    const usuariosSalvos = localStorage.getItem('usuarios');
+    const usuariosSalvos = localStorage.getItem("usuarios");
     const usuarios: Usuario[] = usuariosSalvos ? JSON.parse(usuariosSalvos) : [];
 
-    const usuarioAutenticado = usuarios.find(user => 
-      user.cpf === cpf && user.senha === senha
+    const usuarioAutenticado = usuarios.find(
+      (user) => user.cpf === cpf && user.senha === senha
     );
 
     if (usuarioAutenticado) {
       alert(`Bem-vindo(a), ${usuarioAutenticado.nome}!`);
 
-      localStorage.setItem('usuarioLogado', JSON.stringify(usuarioAutenticado));
+      localStorage.setItem("usuarioLogado", JSON.stringify(usuarioAutenticado));
 
-      navigate('/logado');
+      navigate("/app"); 
     } else {
-      alert('CPF ou senha incorretos. Tente novamente.');
+      alert("CPF ou senha incorretos. Tente novamente.");
     }
   };
 
@@ -69,10 +69,12 @@ export default function Login() {
 
       <section className="flex-1 py-8 px-4">
         <h2 className="section-title mb-8">Bem-vindo à página de login</h2>
-        
+
         <form onSubmit={handleSubmit} className="form-container max-w-md mx-auto">
           <div className="mb-4">
-            <label htmlFor="idCpf" className="block text-black font-medium mb-2">CPF:</label>
+            <label htmlFor="idCpf" className="block text-black font-medium mb-2">
+              CPF:
+            </label>
             <input
               type="text"
               maxLength={11}
@@ -87,10 +89,11 @@ export default function Login() {
           </div>
 
           <div className="mb-6">
-            <label htmlFor="idSenha" className="block text-black font-medium mb-2">Senha:</label>
+            <label htmlFor="idSenha" className="block text-black font-medium mb-2">
+              Senha:
+            </label>
             <input
               type="password"
-              maxLength={8}
               id="idSenha"
               name="senha"
               placeholder="Digite sua senha..."
@@ -101,8 +104,8 @@ export default function Login() {
             />
           </div>
 
-          <button 
-            aria-label="Botão de entrar na conta" 
+          <button
+            aria-label="Botão de entrar na conta"
             type="submit"
             className="form-button"
           >
@@ -113,10 +116,11 @@ export default function Login() {
 
       <section className="text-center py-4">
         <p className="text-black mb-4">Ainda não tem uma conta?</p>
-        <Link 
-          className="crieaqui inline-block" 
-          to="/cadastro" 
-          aria-label="Ir para a página de cadastro">
+        <Link
+          className="crieaqui inline-block"
+          to="/cadastro"
+          aria-label="Ir para a página de cadastro"
+        >
           Crie Aqui!
         </Link>
       </section>

@@ -1,7 +1,7 @@
-
+import Footer from "../../components/Rodape/Rodape";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-
+import Jade from "../../assets/Jade.png"
 type Usuario = {
   nome: string;
   cpf: string;
@@ -15,15 +15,15 @@ export default function Logado() {
   const [usuario, setUsuario] = useState<Usuario | null>(null);
 
   useEffect(() => {
-    const usuarioLogado = localStorage.getItem('usuarioLogado');
+    const usuarioLogado = localStorage.getItem("usuarioLogado");
     if (usuarioLogado) {
       setUsuario(JSON.parse(usuarioLogado));
     }
   }, []);
 
   const handleLogout = () => {
-    localStorage.removeItem('usuarioLogado');
-    navigate('/login'); 
+    localStorage.removeItem("usuarioLogado");
+    navigate("/login"); 
   };
 
   return (
@@ -31,10 +31,10 @@ export default function Logado() {
       <header className="header-bg">
         <div className="flex justify-between items-center">
           <div>
-            <h1 className="header-title">Minha Área</h1>
+            <h1 className="header-title">Área ADSOS</h1>
             {usuario && (
               <p className="text-white text-sm">
-                Olá, {usuario.nome} ({usuario.tipo})
+                Olá, {usuario.nome} ({usuario.tipo})!
               </p>
             )}
           </div>
@@ -61,10 +61,18 @@ export default function Logado() {
           </nav>
         </div>
       </header>
-
+      <div>
+      <img 
+        className="mx-auto my-5 max-w-xs rounded-lg" 
+        src={Jade} 
+        alt="Foto de uma garota em desenho chamada Jade" 
+        />
+      </div>
       <main className="flex-1 p-4">
         <Outlet />
       </main>
+
+      <Footer />
     </div>
   );
 }
