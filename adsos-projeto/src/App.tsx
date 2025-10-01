@@ -35,12 +35,6 @@ export default function App() {
       <main className="flex-1 p-4">
         <Outlet />  
       </main>
-
-      <footer className="footer-bg">
-        <p className="footer-text">
-          Produzido por ADSOS - Copyright 2025 ©
-        </p>
-      </footer>
     </div>
   );
 }
