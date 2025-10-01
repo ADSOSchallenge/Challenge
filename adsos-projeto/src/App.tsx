@@ -6,8 +6,8 @@ export default function App() {
       <header className="p-4 bg-blue-600 text-white flex gap-4">
         <Link to="/">Home</Link>
         <Link to="/integrantes">Integrantes</Link>
-        <Link to="/cadastro">Cadastro</Link>
-        <Link to="/faq">FAQ</Link>
+        <Link to="/faq">Faq</Link>
+        <Link to="/tutorial">Tutorial</Link>
         <Link to="/contato">Contato</Link>
       </header>
 

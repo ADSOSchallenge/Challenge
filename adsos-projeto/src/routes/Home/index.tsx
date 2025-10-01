@@ -3,8 +3,6 @@ export default function Home() {
   document.title = "Home";
 
   return (
-    <body>
-  
     <main>
         <article>
             <section>
@@ -36,7 +34,5 @@ export default function Home() {
     <footer>
         <p id="footerp">Produzido por ADSOS - Copyright 2025 © - Todos os direitos reservados.</p>
     </footer>
-</body>
-
   );
 }
