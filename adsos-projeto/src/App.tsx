@@ -9,10 +9,11 @@ export default function App() {
         <Link to="/faq">Faq</Link>
         <Link to="/tutorial">Tutorial</Link>
         <Link to="/contato">Contato</Link>
+        <Link to="/login">Login</Link>
       </header>
 
       <main className="p-4">
-        <Outlet /> 
+        <Outlet />  
       </main>
     </div>
   );

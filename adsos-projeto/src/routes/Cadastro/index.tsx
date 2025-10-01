@@ -31,7 +31,6 @@ export default function Cadastro() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Aqui você pode enviar os dados do formulário para a API ou realizar qualquer outra ação
     console.log("Dados do cadastro:", formData);
   };
 
@@ -44,6 +43,7 @@ export default function Cadastro() {
       <section>
         <h2>Bem-vindo à página de cadastro</h2>
         <form id="formCadastro" onSubmit={handleSubmit} aria-label="Formulário de cadastro">
+          {}
           <div>
             <label htmlFor="idNome">Nome:</label>
             <input
@@ -57,8 +57,22 @@ export default function Cadastro() {
             />
           </div>
 
-          
+          {}
+          <div>
             <label htmlFor="idCpf">CPF:</label>
+            <input
+              type="text"
+              id="idCpf"
+              name="cpf"
+              placeholder="Digite seu CPF..."
+              value={formData.cpf}
+              onChange={handleChange}
+              required
+              maxLength={11}
+            />
+          </div>
+
+          {}
           <div>
             <label htmlFor="idEmail">Email:</label>
             <input
@@ -72,6 +86,7 @@ export default function Cadastro() {
             />
           </div>
 
+          {}
           <div>
             <label htmlFor="idSenha">Senha:</label>
             <input
@@ -86,6 +101,7 @@ export default function Cadastro() {
             />
           </div>
 
+          {}
           <div>
             <label htmlFor="idTipoUsuario">Tipo de Usuário:</label>
             <select
