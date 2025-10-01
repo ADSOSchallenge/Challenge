@@ -170,11 +170,6 @@ export default function Agendamento() {
         </section>
       </div>
 
-      <footer className="footer-bg">
-        <p className="footer-text">
-          Produzido por ADSOS - Copyright 2025 © - Todos os direitos reservados.
-        </p>
-      </footer>
     </main>
   );
 }

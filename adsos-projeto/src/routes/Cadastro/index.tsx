@@ -121,10 +121,6 @@ export default function Cadastro() {
           </button>
         </form>
       </section>
-
-      <footer className="bg-gray-800 text-white p-4 text-center">
-        <p>Produzido por ADSOS - Copyright 2025 © - Todos os direitos reservados.</p>
-      </footer>
     </main>
   );
 }

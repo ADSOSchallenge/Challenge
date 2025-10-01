@@ -3,20 +3,44 @@ import './global.css';
 
 export default function App() {
   return (
-    <div>
-      <header className="p-4 bg-blue-600 text-white flex gap-4">
-        <Link to="/">Home</Link>
-        <Link to="/integrantes">Integrantes</Link>
-        <Link to="/faq">Faq</Link>
-        <Link to="/tutorial">Tutorial</Link>
-        <Link to="/contato">Contato</Link>
-        <Link to="/login">Login</Link>
-        <Link to="/sobre">Sobre</Link>
+    <div className="min-h-screen flex flex-col">
+      <header className="header-bg">
+        <nav className="main-nav">
+          <ul className="nav-list">
+            <li className="nav-item">
+              <Link to="/" className="nav-link">Home</Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/integrantes" className="nav-link">Integrantes</Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/faq" className="nav-link">FAQ</Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/tutorial" className="nav-link">Tutorial</Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/contato" className="nav-link">Contato</Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/login" className="nav-link">Login</Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/sobre" className="nav-link">Sobre</Link>
+            </li>
+          </ul>
+        </nav>
       </header>
 
-      <main className="p-4">
+      <main className="flex-1 p-4">
         <Outlet />  
       </main>
+
+      <footer className="footer-bg">
+        <p className="footer-text">
+          Produzido por ADSOS - Copyright 2025 ©
+        </p>
+      </footer>
     </div>
   );
 }

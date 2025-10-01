@@ -75,12 +75,6 @@ export default function Tutorial() {
           </section>
         </article>
       </main>
-
-      <footer className="footer-bg">
-        <p className="footer-text">
-          Produzido por ADSOS - Copyright 2025 © - Todos os direitos reservados.
-        </p>
-      </footer>
     </div>
   );
 }

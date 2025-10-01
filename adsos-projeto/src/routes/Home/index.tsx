@@ -1,5 +1,4 @@
 import logo from '../../assets/adsos.png';
-import hc from '../../assets/hc.png';
 export default function Home() {
   document.title = "Home";
 
@@ -29,13 +28,6 @@ export default function Home() {
           </section>
         </article>
       </main>
-
-      <footer className="footer-bg">
-        <p className="footer-text">
-          Produzido por ADSOS - Copyright 2025 © - Todos os direitos
-          reservados.
-        </p>
-      </footer>
     </div>
   );
 }

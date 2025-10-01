@@ -1,4 +1,4 @@
-import logo from '../../assets/adsos.png';
+import hcsobre from '../../assets/hcsobre.png';
 import hc from '../../assets/hc.png';
 export default function Sobre() {
   document.title = "Sobre";
@@ -15,6 +15,11 @@ export default function Sobre() {
             <p className="text-black text-left mb-4">
               O HCFMUSP tem como missão prestar assistência médico-hospitalar de qualidade, formar profissionais de saúde e desenvolver pesquisas científicas que transformam vidas. Atua como hospital de referência para casos de alta complexidade, atendendo pacientes de todo o Brasil.
             </p>
+            <img
+              src={hcsobre} 
+              alt="Foto do Hospital das Clínicas"
+              className="mx-auto max-w-xs"
+            />
           </section>
 
           <section className="mb-8">
@@ -51,12 +56,6 @@ export default function Sobre() {
         </article>
       </main>
 
-      <footer className="footer-bg">
-        <p className="footer-text">
-          Produzido por ADSOS - Copyright 2025 © - Todos os direitos
-          reservados.
-        </p>
-      </footer>
     </div>
   );
 }

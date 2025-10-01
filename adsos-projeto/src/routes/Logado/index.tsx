@@ -30,9 +30,6 @@ export default function Logado() {
         <Outlet />
       </main>
 
-      <footer className="footer-bg">
-        <p className="footer-text">Produzido por ADSOS - Copyright 2025</p>
-      </footer>
     </div>
   );
 }

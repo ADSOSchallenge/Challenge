@@ -107,12 +107,6 @@ export default function EditarCadastros() {
           </button>
         </form>
       </section>
-
-      <footer className="footer-bg">
-        <p className="footer-text">
-          Produzido por ADSOS - Copyright 2025 © - Todos os direitos reservados.
-        </p>
-      </footer>
     </main>
   );
 }
