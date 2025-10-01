@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { useState } from "react";
 
 export default function Feedback() {
@@ -35,13 +34,6 @@ export default function Feedback() {
       <header className="header-bg">
         <div className="flex justify-between items-center">
           <h1 className="header-title">Deixe um feedback</h1>
-          <nav>
-            <ul className="nav-list">
-              <li className="nav-item">
-                <Link to="/" className="nav-link" aria-label="Voltar ao menu de login">← Voltar</Link>
-              </li>
-            </ul>
-          </nav>
         </div>
       </header>
 

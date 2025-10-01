@@ -7,6 +7,14 @@ type Medico = {
   especialidade: string;
 };
 
+type FormData = {
+  cpfPaciente: string;
+  cpfMedico: string;
+  dataConsulta: string;
+  horaConsulta: string;
+  especializacao: string;
+};
+
 export default function Agendamento() {
   const [medicos] = useState<Medico[]>([
     { id: "1", nome: "Dra. Giovanna Bardella", especialidade: "Cardiologia" },
@@ -15,7 +23,7 @@ export default function Agendamento() {
     { id: "4", nome: "Dr. Alexandre Carlos", especialidade: "Pediatria" },
   ]);
 
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     cpfPaciente: "",
     cpfMedico: "",
     dataConsulta: "",
@@ -25,15 +33,24 @@ export default function Agendamento() {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Dados do agendamento:", formData);
+
+    const consultasExistentes: unknown[] = JSON.parse(localStorage.getItem("consultas") || "[]");
+
+    
+    const novaConsulta = {
+      id: consultasExistentes.length + 1,
+      data: formData.dataConsulta,
+      hora: formData.horaConsulta,
+      medico: medicos.find(m => m.id === formData.cpfMedico)?.nome || "",
+      especialidade: formData.especializacao,
+    };
+    localStorage.setItem("consultas", JSON.stringify([...consultasExistentes, novaConsulta]));
+
     alert("Consulta agendada com sucesso!");
 
     setFormData({
@@ -49,11 +66,11 @@ export default function Agendamento() {
     <main className="min-h-screen flex flex-col">
       <header className="header-bg">
         <div className="flex justify-between items-center">
-          <h1 className="header-title">Agendar teleconsulta</h1>
+          <h1 className="header-title">Agendar Teleconsulta</h1>
           <nav>
             <ul className="nav-list">
               <li className="nav-item">
-                <Link to="/" className="nav-link">← Voltar</Link>
+                <Link to="/app" className="nav-link">← Voltar</Link>
               </li>
             </ul>
           </nav>
@@ -62,14 +79,10 @@ export default function Agendamento() {
 
       <div className="flex-1 p-4">
         <section className="max-w-2xl mx-auto">
-          <h2 className="section-title mb-4">Agendar teleconsulta</h2>
-          <p className="text-black text-left mb-6">
-            Para agendar sua teleconsulta, é necessário completar os dados do formulário.
-          </p>
-
+          <h2 className="section-title mb-4">Preencha os dados da consulta</h2>
           <form onSubmit={handleSubmit} className="form-container">
             <fieldset className="border p-4 rounded border-gray-300">
-              <legend className="text-lg font-semibold px-2">Dados:</legend>
+              <legend className="text-lg font-semibold px-2">Dados do Agendamento</legend>
 
               <div className="mb-4">
                 <label htmlFor="idCpfPac" className="block text-black font-medium mb-2">
@@ -156,20 +169,17 @@ export default function Agendamento() {
                 />
               </div>
 
-              <div>
-                <button 
-                  type="submit" 
-                  className="form-button"
-                  aria-label="Botão de agendar"
-                >
-                  Agendar
-                </button>
-              </div>
+              <button 
+                type="submit" 
+                className="form-button"
+                aria-label="Agendar consulta"
+              >
+                Agendar
+              </button>
             </fieldset>
           </form>
         </section>
       </div>
-
     </main>
   );
 }

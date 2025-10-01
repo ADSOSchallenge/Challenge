@@ -41,13 +41,13 @@ export default function Logado() {
           <nav>
             <ul className="nav-list">
               <li className="nav-item">
-                <Link to="/agenda" className="nav-link">Agenda</Link>
+                <Link to="agenda" className="nav-link">Minha agenda</Link>
               </li>
               <li className="nav-item">
-                <Link to="/agendamento" className="nav-link">Agendar</Link>
+                <Link to="agendamento" className="nav-link">Agendar consulta</Link>
               </li>
               <li className="nav-item">
-                <Link to="/feedback" className="nav-link">Feedback</Link>
+                <Link to="feedback" className="nav-link">Feedback</Link>
               </li>
               <li className="nav-item">
                 <button 

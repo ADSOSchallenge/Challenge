@@ -33,7 +33,6 @@ export default function Cadastro() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Validações (igual ao seu JavaScript original)
     if (!formData.nome || !formData.cpf || !formData.email || !formData.senha || !formData.tipo) {
       alert('Por favor, preencha todos os campos.');
       return;
