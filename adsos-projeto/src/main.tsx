@@ -15,6 +15,7 @@ import Logado from "./routes/Logado";
 import Agenda from "./routes/Agenda";
 import Agendamento from "./routes/Agendamento";
 import Feedback from "./routes/Feedback";
+import Sobre from "./routes/Sobre";
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,7 @@ const router = createBrowserRouter([
       { path: "tutorial", element: <Tutorial /> },
       { path: "login", element: <Login /> },
       { path: "cadastro", element: <Cadastro /> },
+      { path: "sobre", element: <Sobre /> },
     ],
   },
   {

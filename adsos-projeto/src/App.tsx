@@ -11,6 +11,7 @@ export default function App() {
         <Link to="/tutorial">Tutorial</Link>
         <Link to="/contato">Contato</Link>
         <Link to="/login">Login</Link>
+        <Link to="/sobre">Sobre</Link>
       </header>
 
       <main className="p-4">

@@ -14,13 +14,19 @@ export default function Header(): JSX.Element {
             <Link to="/integrantes" className="nav-link">Integrantes</Link>
           </li>
           <li className="nav-item">
-            <Link to="/cadastro" className="nav-link">Cadastros</Link>
-          </li>
-          <li className="nav-item">
             <Link to="/faq" className="nav-link">FAQ</Link>
           </li>
           <li className="nav-item">
+            <Link to="/tutorial" className="nav-link">Tutorial</Link>
+          </li>
+          <li className="nav-item">
             <Link to="/contato" className="nav-link">Contato</Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/login" className="nav-link">Login</Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/sobre" className="nav-link">Sobre</Link>
           </li>
         </ul>
       </nav>
