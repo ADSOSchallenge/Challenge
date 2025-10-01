@@ -35,81 +35,77 @@ export default function Cadastro() {
   };
 
   return (
-    <main>
-      <header>
-        <h1>Cadastro</h1>
+    <main className="min-h-screen flex flex-col">
+      <header className="bg-blue-600 text-white p-4 text-center">
+        <h1 className="text-2xl font-bold">Cadastro</h1>
       </header>
 
-      <section>
-        <h2>Bem-vindo à página de cadastro</h2>
-        <form id="formCadastro" onSubmit={handleSubmit} aria-label="Formulário de cadastro">
-          {}
-          <div>
-            <label htmlFor="idNome">Nome:</label>
+      <section className="flex-1 p-4">
+        <h2 className="text-xl text-gray-800 text-center mb-6">Bem-vindo à página de cadastro</h2>
+        
+        <form onSubmit={handleSubmit} className="max-w-md mx-auto bg-white p-6 rounded shadow">
+          <div className="mb-4">
+            <label className="block text-gray-700 mb-2">Nome:</label>
             <input
               type="text"
-              id="idNome"
               name="nome"
               placeholder="Digite seu nome..."
               value={formData.nome}
               onChange={handleChange}
               required
+              className="w-full p-2 border border-gray-300 rounded"
             />
           </div>
 
-          {}
-          <div>
-            <label htmlFor="idCpf">CPF:</label>
+          <div className="mb-4">
+            <label className="block text-gray-700 mb-2">CPF:</label>
             <input
               type="text"
-              id="idCpf"
               name="cpf"
               placeholder="Digite seu CPF..."
               value={formData.cpf}
               onChange={handleChange}
               required
               maxLength={11}
+              className="w-full p-2 border border-gray-300 rounded"
             />
           </div>
 
-          {}
-          <div>
-            <label htmlFor="idEmail">Email:</label>
+          <div className="mb-4">
+            <label className="block text-gray-700 mb-2">Email:</label>
             <input
               type="email"
-              id="idEmail"
               name="email"
               placeholder="Digite seu email..."
               value={formData.email}
               onChange={handleChange}
               required
+              className="w-full p-2 border border-gray-300 rounded"
             />
           </div>
 
-          {}
-          <div>
-            <label htmlFor="idSenha">Senha:</label>
+          <div className="mb-4">
+            <label className="block text-gray-700 mb-2">Senha:</label>
             <input
               type="password"
-              id="idSenha"
               name="senha"
               placeholder="Digite uma senha de 8 dígitos..."
               value={formData.senha}
               onChange={handleChange}
               required
               maxLength={8}
+              className="w-full p-2 border border-gray-300 rounded"
             />
           </div>
 
-          {}
-          <div>
-            <label htmlFor="idTipoUsuario">Tipo de Usuário:</label>
+          <div className="mb-6">
+            <label className="block text-gray-700 mb-2">Tipo de Usuário:</label>
             <select
-              id="idTipoUsuario"
               name="tipo"
               value={formData.tipo}
               onChange={handleChange}
               required
+              className="w-full p-2 border border-gray-300 rounded"
             >
               <option value="">Selecione</option>
               <option value="medico">Médico</option>
@@ -117,12 +113,17 @@ export default function Cadastro() {
             </select>
           </div>
 
-          <button aria-label="Botão cadastro" type="submit">Cadastrar</button>
+          <button 
+            type="submit" 
+            className="w-full bg-green-500 text-white p-2 rounded hover:bg-green-600"
+          >
+            Cadastrar
+          </button>
         </form>
       </section>
 
-      <footer>
-        <p id="footerp">Produzido por ADSOS - Copyright 2025 © - Todos os direitos reservados.</p>
+      <footer className="bg-gray-800 text-white p-4 text-center">
+        <p>Produzido por ADSOS - Copyright 2025 © - Todos os direitos reservados.</p>
       </footer>
     </main>
   );

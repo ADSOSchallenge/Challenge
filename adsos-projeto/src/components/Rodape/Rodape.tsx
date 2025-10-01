@@ -1,7 +1,11 @@
-export default function Footer() {
+import type { JSX } from "react";
+
+export default function Footer(): JSX.Element {
   return (
-    <footer className="bg-gray-200 text-center p-4 mt-8">
-      <p>&copy; {new Date().getFullYear()} && Todos os direitos reservados. 2025</p>
+    <footer className="footer-bg">
+      <p className="footer-text">
+        &copy; {new Date().getFullYear()} Todos os direitos reservados.
+      </p>
     </footer>
   );
 }
