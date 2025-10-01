@@ -35,7 +35,10 @@
 
 @layer components {
   .header-bg {
-    @apply bg-[#2c5b8e] text-white p-4 flex flex-col; /* removi a imagem temporariamente */
+    @apply bg-[#2c5b8e] text-white p-4 flex flex-col;
+    background-image: url('../../img/header.png');
+    background-size: cover;
+    background-position: center;
   }
   
   .header-title {
@@ -155,7 +158,17 @@
     @apply text-center;
   }
 }
+.integrantesimg {
+  @apply w-[300px];
+}
 
+.integrantesmenu {
+  @apply w-[300px] transition-transform duration-300 ease-in-out hover:scale-110;
+}
+
+.botao {
+  @apply w-[60px] mr-[10px];
+}
 @layer utilities {
   .flex-1 {
     flex: 1;
@@ -182,9 +195,4 @@
   .integrantes-menu {
     width: 225px;
   }
-
-  /* TESTE - REMOVER DEPOIS */
-.header-bg {
-  background-color: red !important;
-}
 }

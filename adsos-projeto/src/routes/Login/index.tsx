@@ -16,7 +16,7 @@ export default function Login() {
           <div className="mb-4">
             <label htmlFor="idCpf" className="block text-black font-medium mb-2">CPF:</label>
             <input
-              type="number"
+              type="text"
               maxLength={11}
               id="idCpf"
               name="cpf"

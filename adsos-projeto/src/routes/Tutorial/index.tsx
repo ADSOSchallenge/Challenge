@@ -9,7 +9,6 @@ export default function Tutorial() {
 
       <main className="flex-1 p-4">
         <article className="max-w-4xl mx-auto">
-          {/* Seção de Introdução */}
           <section className="mb-8">
             <h2 className="section-title mb-4">Bem-vindo ao tutorial!</h2>
             <p className="text-black text-left">
@@ -19,8 +18,7 @@ export default function Tutorial() {
             </p>
           </section>
 
-          {/* Seção do Tutorial */}
-          <section id="tutorial" className="text-tutorial">
+         <section id="tutorial" className="text-tutorial">
             <ul className="space-y-8">
               <li className="border-b border-gray-200 pb-6">
                 <h2 className="text-xl font-bold text-gray-800 mb-3">1. Acessando o Portal do Paciente</h2>

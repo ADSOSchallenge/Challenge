@@ -1,3 +1,5 @@
+import logo from '../../assets/adsos.png';
+import hc from '../../assets/hc.png';
 export default function Home() {
   document.title = "Home";
 
@@ -20,7 +22,7 @@ export default function Home() {
               tranquilo aos serviços de saúde online.
             </p>
             <img 
-              src="./img/adsos.png" 
+              src={logo}  
               alt="Foto da logo da ADSOS." 
               className="mx-auto max-w-xs"
             />
@@ -52,7 +54,7 @@ export default function Home() {
               </a>
             </p>
             <img
-              src="./img/hc.png"
+              src={hc} 
               alt="Foto da logo do Hospital das Clínicas"
               className="mx-auto max-w-xs"
             />
