@@ -11,6 +11,10 @@ import { StrictMode } from "react";
 import Tutorial from "./routes/Tutorial";
 import Login from "./routes/Login";
 import './global.css'; 
+import Logado from "./routes/Logado";
+import Agenda from "./routes/Agenda";
+import Agendamento from "./routes/Agendamento";
+import Feedback from "./routes/Feedback";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +29,15 @@ const router = createBrowserRouter([
       { path: "tutorial", element: <Tutorial /> },
       { path: "login", element: <Login /> },
       { path: "cadastro", element: <Cadastro /> },
+    ],
+  },
+  {
+    path: "/app",
+    element: <Logado />,
+    children: [
+      { path: "agenda", element: <Agenda /> },
+      { path: "agendamento", element: <Agendamento /> },
+      { path: "feedback", element: <Feedback /> },
     ],
   },
 ]);
