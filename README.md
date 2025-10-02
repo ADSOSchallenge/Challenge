@@ -91,4 +91,9 @@ O projeto foi desenvolvido utilizando as seguintes tecnologias:
 ---
 
 ## 🔗 Link do Repositório
-O link do repositório é: https://github.com/ADSOSchallenge/Challenge.git
+https://github.com/ADSOSchallenge/Challenge.git
+
+---
+
+## 🔗 Link do Youtube
+https://youtu.be/ok82Sb_a9EI?si=76O0cZnWkM9Yy6xG
