@@ -1,8 +1,0 @@
-export type TipoCadastro = {
-  id?: number;  
-  nome: string;
-  cpf: number;
-  email: string;
-  senha: string;
-  tipo: string;
-};

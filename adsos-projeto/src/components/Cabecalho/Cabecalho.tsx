@@ -1,39 +1,13 @@
-import type { JSX } from "react";
-import { Link } from "react-router-dom";
-import headerhome from '../../assets/headerhome.png';
+import logoadsos from "../../assets/adsos.png";
+import Menu from "../Menu/Menu";
 
-export default function Header(): JSX.Element {
+export default function Cabecalho() {
   return (
-    <header className="header-bg">
-      <div className="flex flex-col items-center">
-        <h1 className="header-title mb-4">Minha Aplicação</h1>
-        <img className="integrantesimg mx-auto mb-4" src={headerhome} alt="Foto de médicos trabalhando"/>
-        <nav className="main-nav w-full flex justify-center">
-          <ul className="nav-list">
-            <li className="nav-item">
-              <Link to="/" className="nav-link">Home</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/integrantes" className="nav-link">Integrantes</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/faq" className="nav-link">FAQ</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/tutorial" className="nav-link">Tutorial</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/contato" className="nav-link">Contato</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/login" className="nav-link">Login</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/sobre" className="nav-link">Sobre</Link>
-            </li>
-          </ul>
-        </nav>
+    <header className="flex items-center justify-between p-4 bg-gradient-to-r from-blue-400 to-green-200 shadow-lg">
+      <div>
+        <img src={logoadsos} alt="Logo do grupo ADSOS" className="h-14 rounded-md" />
       </div>
+      <Menu />
     </header>
   );
 }
