@@ -12,7 +12,7 @@ interface FormularioProps {
   titulo?: string;
   campos: CampoFormulario[];
   botaoTexto?: string;
-  valores: Record<string, string>; // estado externo
+  valores: Record<string, string>; 
   setValores: (novosValores: Record<string, string>) => void;
   onSubmit: (dados: Record<string, string>) => void;
 }

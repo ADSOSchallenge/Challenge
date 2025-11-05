@@ -23,7 +23,7 @@ export default function Faq() {
     {
       pergunta: "5. O que preciso para participar de uma teleconsulta?",
       resposta: (
-        <ul className="text-gray-800 text-left pl-6 list-disc">
+        <ul>
           <li>Ter uma consulta agendada;</li>
           <li>Estar conectado à internet;</li>
           <li>Ter o aplicativo Portal do Paciente HC instalado;</li>
@@ -48,10 +48,10 @@ export default function Faq() {
     {
       pergunta: "9. Como posso tirar dúvidas sobre o atendimento?",
       resposta: (
-        <p className="text-gray-800">
+        <p>
           Você pode usar a seção de suporte dentro do app para enviar perguntas ou relatar problemas.
           Também dá pra entrar em contato pelo site do ADSOS:{" "}
-          <a href="/contato" className="text-blue-700 hover:underline">Clique aqui</a>.
+          <a href="/contato">Clique aqui</a>.
         </p>
       )
     },
@@ -68,36 +68,30 @@ export default function Faq() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gray-100">
-      <header className="bg-[#285f89] text-white p-4">
-        <h1 className="text-2xl font-bold">FAQ</h1>
+    <div id="faq">
+      <header>
+        <h1>FAQ</h1>
       </header>
 
-      <main className="flex-1 p-4">
-        <section className="max-w-4xl mx-auto mb-8">
-          <h2 className="text-xl font-semibold mb-4 text-gray-900">Bem-vindo à seção de perguntas frequentes!</h2>
-          <p className="text-gray-800 text-left">
+      <main>
+        <section>
+          <h2>Bem-vindo à seção de perguntas frequentes!</h2>
+          <p>
             Aqui, você encontrará respostas para as dúvidas mais comuns sobre o uso do aplicativo do Hospital das Clínicas
             e os serviços oferecidos. Se não encontrar a informação que procura, entre em contato com nossa equipe de suporte ADSOS.
           </p>
         </section>
 
-        <article className="max-w-4xl mx-auto flex flex-col gap-2">
+        <article>
           {perguntas.map((item, index) => (
-            <div key={index} className="border rounded-md overflow-hidden shadow-sm">
-              <button
-                onClick={() => toggleAccordion(index)}
-                className="w-full text-left px-4 py-3 bg-gray-200 hover:bg-gray-300 font-medium flex justify-between items-center"
-              >
-                <span className="text-gray-900">{item.pergunta}</span>
-                <span className="text-gray-700">{openIndex === index ? "−" : "+"}</span>
+            <div key={index} className={`faq-item ${openIndex === index ? "aberto" : ""}`}>
+              <button onClick={() => toggleAccordion(index)}>
+                <span>{item.pergunta}</span>
+                <span>{openIndex === index ? "−" : "+"}</span>
               </button>
 
-              <div
-                className={`bg-white px-4 overflow-hidden transition-max-height duration-300`}
-                style={{ maxHeight: openIndex === index ? "1000px" : "0px" }}
-              >
-                <div className="py-2 text-gray-800">{item.resposta}</div>
+              <div className="resposta">
+                {item.resposta}
               </div>
             </div>
           ))}
@@ -106,4 +100,5 @@ export default function Faq() {
     </div>
   );
 }
+
 
