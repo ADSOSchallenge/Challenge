@@ -23,7 +23,7 @@ export default function Faq() {
     {
       pergunta: "5. O que preciso para participar de uma teleconsulta?",
       resposta: (
-        <ul>
+        <ul className="list-disc ml-6">
           <li>Ter uma consulta agendada;</li>
           <li>Estar conectado à internet;</li>
           <li>Ter o aplicativo Portal do Paciente HC instalado;</li>
@@ -51,7 +51,7 @@ export default function Faq() {
         <p>
           Você pode usar a seção de suporte dentro do app para enviar perguntas ou relatar problemas.
           Também dá pra entrar em contato pelo site do ADSOS:{" "}
-          <a href="/contato">Clique aqui</a>.
+          <a href="/contato" className="text-blue-500 underline">Clique aqui</a>.
         </p>
       )
     },
@@ -68,37 +68,36 @@ export default function Faq() {
   };
 
   return (
-    <div id="faq">
-      <header>
-        <h1>FAQ</h1>
-      </header>
+    <div >
+      <h1>FAQ</h1>  
 
-      <main>
-        <section>
-          <h2>Bem-vindo à seção de perguntas frequentes!</h2>
-          <p>
-            Aqui, você encontrará respostas para as dúvidas mais comuns sobre o uso do aplicativo do Hospital das Clínicas
-            e os serviços oferecidos. Se não encontrar a informação que procura, entre em contato com nossa equipe de suporte ADSOS.
-          </p>
-        </section>
+      <section>
+        <h2>Bem-vindo à seção de perguntas frequentes!</h2>
+        <p className="text-gray-700">
+          Aqui, você encontrará respostas para as dúvidas mais comuns sobre o uso do aplicativo do Hospital das Clínicas
+          e os serviços oferecidos. Se não encontrar a informação que procura, entre em contato com nossa equipe de suporte ADSOS.
+        </p>
+      </section>
 
-        <article>
-          {perguntas.map((item, index) => (
-            <div key={index} className={`faq-item ${openIndex === index ? "aberto" : ""}`}>
-              <button onClick={() => toggleAccordion(index)}>
-                <span>{item.pergunta}</span>
-                <span>{openIndex === index ? "−" : "+"}</span>
-              </button>
+      <article className="space-y-4">
+        {perguntas.map((item, index) => (
+          <div key={index} className="border border-blue-200 rounded-xl overflow-hidden">
+            <button
+              onClick={() => toggleAccordion(index)}
+              className="w-full flex justify-between items-center p-4 text-left bg-blue-100 hover:bg-blue-200 transition"
+            >
+              <span className="font-medium text-blue-900">{item.pergunta}</span>
+              <span className="text-blue-700 text-xl">{openIndex === index ? "−" : "+"}</span>
+            </button>
 
-              <div className="resposta">
+            {openIndex === index && (
+              <div className="p-4 bg-white text-gray-800 animate-fadeIn">
                 {item.resposta}
               </div>
-            </div>
-          ))}
-        </article>
-      </main>
+            )}
+          </div>
+        ))}
+      </article>
     </div>
   );
 }
-
-

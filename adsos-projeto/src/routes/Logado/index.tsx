@@ -2,13 +2,7 @@ import Footer from "../../components/Rodape/Rodape";
 import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Jade from "../../assets/Jade.png"
-type Usuario = {
-  nome: string;
-  cpf: string;
-  email: string;
-  senha: string;
-  tipo: string;
-};
+import type { Usuario } from "../../types/Usuario";
 
 export default function Logado() {
   const navigate = useNavigate();

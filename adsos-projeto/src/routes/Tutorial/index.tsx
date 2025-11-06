@@ -8,7 +8,7 @@ export default function Tutorial(){
     <main>
         <div>
             <section>
-                <h2>Bem-vindo ao tutorial!</h2>
+                <h1>Bem-vindo ao tutorial!</h1>
                 <p>Está com dificuldades para acessar o aplicativo e sua teleconsulta? Neste tutorial, vamos te mostrar,
                 de forma clara e fácil, como abrir o aplicativo do Hospital das Clínicas e acessar sua teleconsulta
                 de maneira simples e sem complicações!</p>

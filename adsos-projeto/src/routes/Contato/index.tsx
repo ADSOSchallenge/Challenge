@@ -9,7 +9,7 @@ export default function Contato() {
     <main>
       <div>
         <section>
-          <h2>Formulário para contato</h2>
+          <h1>Formulário para contato</h1>
           <p>Está com alguma dúvida específica? Entre em contato com a gente, ou preencha
             o formulário abaixo para que possamos retornar o mais breve possível.</p>
         </section>
