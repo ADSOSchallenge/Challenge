@@ -5,8 +5,9 @@ export default function Menu() {
   const [aberto, setAberto] = useState(false);
  
   return (
-   <>
-      <button className="menu-btn" onClick={() => setAberto(!aberto)}>☰</button>
+    <>
+      <button 
+        className="menu-btn md:hidden" onClick={() => setAberto(!aberto)}>☰</button>
       <nav className={`menu ${aberto ? "open" : ""}`}>
         <Link to="/" className="nav-link" onClick={() => setAberto(false)}>Home</Link>
         <Link to="/integrantes" className="nav-link" onClick={() => setAberto(false)}>Integrantes</Link>
