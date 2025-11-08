@@ -25,24 +25,11 @@ export default function Agenda() {
   };
 
   return (
-    <main className="min-h-screen flex flex-col">
-      <header className="header-bg">
-        <div className="flex justify-between items-center">
-          <h1 className="header-title">Ver Agenda</h1>
-          <nav>
-            <ul className="nav-list">
-              <li className="nav-item">
-                <Link to="/app" className="nav-link">← Voltar</Link>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </header>
-
-      <div className="flex-1 p-4">
-        <section className="max-w-4xl mx-auto">
-          <h2 className="section-title mb-4">Agenda de Teleconsultas</h2>
-          <p className="text-black text-left mb-6">
+    <main>
+      <div>
+        <section>
+          <h1>Agenda de Teleconsultas</h1>
+          <p>
             Aqui estão suas consultas agendadas:
           </p>
 

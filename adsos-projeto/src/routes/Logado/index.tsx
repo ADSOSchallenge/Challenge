@@ -1,7 +1,5 @@
-import Footer from "../../components/Rodape/Rodape";
-import { Link, Outlet, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Jade from "../../assets/Jade.png"
+import { useNavigate, Link, Outlet } from "react-router-dom";
 import type { Usuario } from "../../types/Usuario";
 
 export default function Logado() {
@@ -9,64 +7,42 @@ export default function Logado() {
   const [usuario, setUsuario] = useState<Usuario | null>(null);
 
   useEffect(() => {
+    document.title = "Área Logada";
+
     const usuarioLogado = localStorage.getItem("usuarioLogado");
     if (usuarioLogado) {
       setUsuario(JSON.parse(usuarioLogado));
+    } else {
+      navigate("/login"); 
     }
-  }, []);
+  }, [navigate]);
 
   const handleLogout = () => {
     localStorage.removeItem("usuarioLogado");
-    navigate("/login"); 
+    navigate("/login");
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
-      <header className="header-bg">
-        <div className="flex justify-between items-center">
-          <div>
-            <h1 className="header-title">Área ADSOS</h1>
-            {usuario && (
-              <p className="text-white text-sm">
-                Olá, {usuario.nome} ({usuario.tipo})!
-              </p>
-            )}
-          </div>
-          <nav>
-            <ul className="nav-list">
-              <li className="nav-item">
-                <Link to="agenda" className="nav-link">Minha agenda</Link>
-              </li>
-              <li className="nav-item">
-                <Link to="agendamento" className="nav-link">Agendar consulta</Link>
-              </li>
-              <li className="nav-item">
-                <Link to="feedback" className="nav-link">Feedback</Link>
-              </li>
-              <li className="nav-item">
-                <button 
-                  onClick={handleLogout}
-                  className="nav-link bg-red-500 hover:bg-red-600 px-3 py-1 rounded"
-                >
-                  Sair
-                </button>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      </header>
-      <div>
-      <img 
-        className="mx-auto my-5 max-w-xs rounded-lg" 
-        src={Jade} 
-        alt="Foto de uma garota em desenho chamada Jade" 
-        />
-      </div>
-      <main className="flex-1 p-4">
-        <Outlet />
-      </main>
+    <div className="logado-container">
+      <div className="logado-card">
+        <p className="logado-nome">Olá, {usuario?.nome || "usuário"}!</p>
+        <p className="logado-email">{usuario?.email || "Email não disponível"}</p>
 
-      <Footer />
+        <nav className="logado-nav">
+          <ul>
+            <li><Link to="agendamento">Agendar consulta</Link></li>
+            <li><Link to="agenda">Minha agenda</Link></li>
+            <li><Link to="feedback">Feedbacks</Link></li>
+            <li><Link to={`editar/${usuario?.id}`}>Editar minha conta</Link></li>
+            <li><Link to={`deletar/${usuario?.id}`}>Deletar minha conta</Link></li>
+          </ul>
+        </nav>
+
+        <button onClick={handleLogout} className="btn-sair">
+          Sair
+        </button>
+      </div>
+      <Outlet />
     </div>
   );
 }
