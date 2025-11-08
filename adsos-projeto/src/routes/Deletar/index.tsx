@@ -24,8 +24,7 @@ export default function DeletarCadastro() {
     <main>
       <h1>Excluir Cadastro</h1>
       <p>Tem certeza que deseja excluir este cadastro?</p>
-      <button onClick={handleDelete}>Excluir</button>
-      <button onClick={() => navigate("/cadastros")}>Cancelar</button>
+      <button onClick={handleDelete} className="botao-excluir">Sim quero excluir!</button>
     </main>
   );
 }

@@ -13,7 +13,7 @@ export default function Logado() {
     if (usuarioLogado) {
       setUsuario(JSON.parse(usuarioLogado));
     } else {
-      navigate("/login"); // redireciona se não estiver logado
+      navigate("/login"); 
     }
   }, [navigate]);
 
