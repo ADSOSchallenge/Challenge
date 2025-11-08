@@ -5,202 +5,357 @@
     padding: 0;
     box-sizing: border-box;
   }
-
+ 
   html, body {
     @apply h-full;
   }
-
+ 
   body, #root {
-    @apply flex flex-col min-h-screen text-[#1e3a5f] leading-6 bg-[#f9fafb] px-4;
+    @apply flex flex-col min-h-screen text-[#1e3a5f] leading-6 bg-[#f9fafb];
   }
-
+ 
   main {
     @apply flex-1 w-full max-w-7xl mx-auto px-4;
   }
-
+ 
   h1 {
     @apply text-2xl font-bold text-[#0c4a6e] mb-4;
   }
-
+ 
   h2 {
     @apply text-xl font-semibold text-[#0c4a6e] mb-3;
   }
-
+ 
   footer {
     @apply bg-[#0891b2] text-white text-center p-5 mt-auto;
   }
 }
-
 @layer components {
   header {
     @apply flex items-center justify-between p-4 shadow-md bg-gradient-to-r from-cyan-600 to-cyan-400 text-white;
   }
-
+ 
   nav {
     @apply flex gap-4;
   }
-
+ 
   .nav-link {
     @apply text-white font-semibold px-4 py-2 rounded transition-all duration-300;
   }
+ 
   .nav-link:hover {
     @apply bg-white/15;
   }
-
   form {
     @apply bg-white p-8 rounded-xl shadow-md max-w-lg mx-auto border-t-4 border-[#0891b2];
   }
+ 
   form h2 {
     @apply text-xl font-bold text-[#0c4a6e] mb-4 text-center;
   }
+ 
   form label {
     @apply block font-semibold text-[#1e3a5f] mb-2;
   }
+ 
   form input, form select {
     @apply w-full p-3 border-2 border-slate-300 rounded-lg text-base transition-all;
   }
+ 
   form input:focus, form select:focus {
     @apply outline-none border-[#0891b2];
   }
+ 
   form button[type="submit"] {
     @apply w-full p-3 bg-[#0891b2] text-white font-semibold rounded-lg cursor-pointer transition-all;
   }
+ 
   form button[type="submit"]:hover {
     @apply bg-[#0e7490] -translate-y-0.5;
-  }
-
-  footer {
-    @apply bg-[#0891b2] text-white text-center p-5 mt-auto;
   }
   footer p {
     @apply text-sm font-medium;
   }
-
   .card {
     @apply bg-white rounded-xl p-6 shadow-sm border-l-4 border-[#0891b2] transition-transform;
   }
+ 
   .card:hover {
     @apply -translate-y-1;
   }
-
+ 
   .grid-cards {
     @apply grid gap-6 mt-8;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   }
-
   .btn {
     @apply px-6 py-3 rounded-lg font-semibold cursor-pointer transition-all no-underline;
   }
+ 
   .btn-primario {
     @apply bg-[#0891b2] text-white;
   }
+ 
   .btn-primario:hover {
     @apply bg-[#0e7490] -translate-y-0.5;
   }
-
+ 
   .integrantesmenu {
     @apply inline-block text-center rounded-full shadow-md m-4 transition-transform;
     width: 300px;
     height: 300px;
   }
+ 
   .integrantesmenu:hover {
     transform: scale(1.1) rotate(3deg);
     box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
   }
-
   main > div:not(:first-child) {
     @apply bg-white p-8 rounded-2xl shadow-md text-center transition-all;
     animation: fadeInUp 0.7s ease both;
   }
+ 
   main > div:not(:first-child):hover {
     @apply -translate-y-1 shadow-lg;
   }
-
+ 
   main img {
     @apply rounded-xl block mx-auto my-4;
     width: 400px;
     height: 400px;
     object-fit: cover;
   }
+ 
   .sobre-img {
     @apply block mx-auto my-6 rounded-xl;
     max-width: 600px;
   }
+ 
   .sobre-logo {
     @apply block mx-auto my-4;
     width: 500px;
   }
+ 
   .botao {
     @apply inline-block m-2 transition-transform;
     width: 40px;
     height: 40px;
   }
+ 
   .botao:hover {
     @apply scale-110;
   }
   .logado-container {
     @apply flex gap-8 p-8;
   }
+ 
   .logado-card {
     @apply rounded-xl p-6 shadow-md min-w-[250px] max-w-[300px] h-fit border-t-4 border-[#0891b2];
     background: linear-gradient(to bottom, #ecfeff 0%, white 100%);
   }
+ 
   .logado-nome {
     @apply text-[#0c4a6e] font-bold text-lg mb-1;
   }
+ 
   .logado-email {
     @apply text-slate-600 text-sm mb-3;
   }
+ 
   .logado-nav ul {
     @apply list-none p-0 my-4;
   }
+ 
   .logado-nav li {
     @apply my-2;
   }
+ 
   .logado-nav a {
     @apply font-semibold text-[#0891b2] transition-colors;
   }
+ 
   .logado-nav a:hover {
     @apply text-[#0c4a6e];
   }
-
+ 
   .botao-excluir, .btn-sair {
     @apply bg-red-700 text-white rounded-lg font-semibold px-4 py-2 cursor-pointer transition-all;
   }
+ 
   .botao-excluir:hover, .btn-sair:hover {
     @apply bg-red-600 -translate-y-0.5;
   }
-
+ 
   .logado-outlet {
     @apply flex-grow;
   }
-
   .tabela-agenda {
     @apply w-full border-collapse mt-4 bg-blue-50 rounded-md overflow-hidden;
   }
+ 
   .tabela-cabecalho {
     @apply bg-[#0891b2] text-white text-left;
   }
+ 
   .tabela-cabecalho th {
     @apply p-3;
   }
+ 
   .tabela-celula {
     @apply p-3 border-b border-gray-300 text-black;
   }
 }
-
 @layer utilities {
   .text-center { @apply text-center; }
 }
-@media (max-width: 768px) {
-  header { @apply flex-wrap gap-4; }
-  nav { @apply w-full flex-col items-center; }
-  .nav-link { @apply w-full text-center; }
-  .grid-cards { grid-template-columns: 1fr; }
-  .integrantesmenu { width: 120px; height: 100px; }
-  main img { width: 200px; height: 300px; }
-  h2 { @apply text-lg; }
-  .logado-card { @apply p-5; }
-  .logado-nome { @apply text-base; }
-  .logado-email { @apply text-xs; }
+@media (max-width: 1024px) {
+  header {
+    @apply flex-wrap gap-3;
+  }
+
+  nav {
+    @apply gap-2;
+  }
+
+  .nav-link {
+    @apply text-sm px-3 py-1;
+  }
 }
+
+@media (max-width: 768px) {
+  .menu-btn {
+    @apply block fixed top-4 right-4 text-3xl text-white bg-transparent border-none cursor-pointer z-50;
+  }
+
+  .menu {
+    @apply fixed top-0 right-[-100%] h-screen w-56 bg-white flex flex-col gap-3 pt-20 px-5 
+    shadow-lg transition-all duration-300 ease-in-out z-40;
+  }
+
+  .menu.open {
+    right: 0;
+  }
+
+  .nav-link {
+    @apply text-[#0e7490] font-semibold text-left w-full py-2 border-b border-slate-200 
+    hover:bg-slate-100 transition-colors;
+  }
+
+  header {
+    @apply relative z-50;
+  }
+
+  main {
+    @apply mt-4;
+  }
+
+  .botao {
+    @apply w-10 h-10 transition-transform hover:scale-110;
+  }
+
+  .social-links {
+    @apply flex flex-wrap justify-center gap-5 mt-4;
+  }
+}
+
+@media (max-width: 480px) {
+  .menu {
+    @apply w-48 px-4 pt-16;
+  }
+
+  .nav-link {
+    @apply text-sm;
+  }
+
+  .menu-btn {
+    @apply text-2xl;
+  }
+
+  main img {
+    width: 180px;
+    height: 220px;
+  }
+
+  h1 {
+    @apply text-xl;
+  }
+
+  h2 {
+    @apply text-lg;
+  }
+
+  .botao {
+    @apply w-8 h-8;
+  }
+
+  .social-links {
+    @apply gap-4;
+  }
+}
+
+.logado-container {
+  @apply flex gap-8 justify-center items-start p-8;
+}
+
+.logado-card {
+  @apply bg-white rounded-2xl shadow-md p-6 flex flex-col gap-4 max-w-sm w-full text-center;
+}
+
+.logado-nome {
+  @apply text-lg font-semibold text-[#1e3a5f];
+}
+
+.logado-email {
+  @apply text-sm text-slate-600;
+}
+
+.logado-nav ul {
+  @apply flex flex-col gap-3 mt-4;
+}
+
+.logado-nav a {
+  @apply text-[#0891b2] font-semibold hover:text-[#0369a1] transition-colors;
+}
+
+.btn-sair {
+  @apply bg-[#dc2626] text-white font-semibold py-2 px-5 rounded-lg mt-4 hover:bg-[#b91c1c] transition;
+}
+
+@media (max-width: 768px) {
+  .logado-container {
+    @apply flex-col items-center text-center p-4;
+  }
+
+  .logado-card {
+    @apply w-full max-w-md;
+  }
+
+  .btn-sair {
+    @apply w-full;
+  }
+}
+
+@media (max-width: 480px) {
+  .logado-container {
+    @apply p-3;
+  }
+
+  .logado-card {
+    @apply p-4;
+  }
+
+  .logado-nome {
+    @apply text-base;
+  }
+
+  .logado-email {
+    @apply text-xs;
+  }
+
+  .logado-nav a {
+    @apply text-sm;
+  }
+}
+
+
+
