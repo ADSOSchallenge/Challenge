@@ -3,31 +3,38 @@ import { useNavigate, Link } from "react-router-dom";
 import Formulario from "../../components/Formulario/Formulario";
 import type { Usuario } from "../../types/Usuario";
 
+const API = import.meta.env.VITE_API_URL;
+
 export default function Login() {
   const navigate = useNavigate();
+
   const [valores, setValores] = useState<{ cpf: string; senha: string }>({
     cpf: "",
     senha: "",
   });
 
-  const handleSubmit = (dados: { cpf: string; senha: string }) => {
-    const usuariosSalvos = localStorage.getItem("usuarios");
-    if (!usuariosSalvos) {
-      alert("Nenhum usuário cadastrado.");
-      return;
-    }
+  const handleSubmit = async (dados: { cpf: string; senha: string }) => {
+    try {
+      const resp = await fetch(`${API}/usuario/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(dados),
+      });
 
-    const lista: Usuario[] = JSON.parse(usuariosSalvos);
-    const usuario = lista.find(
-      (u) => u.cpf === dados.cpf && u.senha === dados.senha
-    );
+      if (!resp.ok) {
+        const erro = await resp.text();
+        alert(`Erro no login: ${erro}`);
+        return;
+      }
 
-    if (usuario) {
-      alert(`Bem-vindo(a), ${usuario.nome}!`);
-      localStorage.setItem("usuarioLogado", JSON.stringify(usuario));
-      navigate("/app"); 
-    } else {
-      alert("CPF ou senha incorretos.");
+      const data: Usuario = await resp.json();
+      alert(`Bem-vindo(a), ${data.nome || "usuário"}!`);
+      localStorage.setItem("usuarioLogado", JSON.stringify(data));
+      if (data.tipoUsuario === "MEDICO") navigate("/dashboard");
+      else navigate("/app");
+    } catch (error) {
+      console.error("Erro no login:", error);
+      alert("Não foi possível realizar o login. Tente novamente mais tarde.");
     }
   };
 
@@ -37,8 +44,19 @@ export default function Login() {
       <Formulario
         titulo="Entrar na sua conta"
         campos={[
-          { label: "CPF", name: "cpf", placeholder: "Digite seu CPF", required: true },
-          { label: "Senha", name: "senha", type: "password", placeholder: "Digite sua senha", required: true },
+          {
+            label: "CPF",
+            name: "cpf",
+            placeholder: "Digite seu CPF",
+            required: true,
+          },
+          {
+            label: "Senha",
+            name: "senha",
+            type: "password",
+            placeholder: "Digite sua senha",
+            required: true,
+          },
         ]}
         valores={valores}
         setValores={setValores}

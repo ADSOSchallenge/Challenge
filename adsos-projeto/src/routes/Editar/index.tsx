@@ -3,37 +3,54 @@ import { useNavigate, useParams } from "react-router-dom";
 import Formulario from "../../components/Formulario/Formulario";
 import type { Usuario } from "../../types/Usuario";
 
+const api = import.meta.env.VITE_API_URL;
+
 export default function EditarCadastros() {
   const navigate = useNavigate();
   const { id } = useParams<{ id: string }>();
   const [valores, setValores] = useState<Usuario>({
     id: "",
     nome: "",
+    celular: "",
     cpf: "",
     email: "",
     senha: "",
-    tipo: "",
+    tipoUsuario: "",
+    sexo: "",
   });
 
   useEffect(() => {
-    const usuariosSalvos = localStorage.getItem("usuarios");
-    if (usuariosSalvos) {
-      const lista: Usuario[] = JSON.parse(usuariosSalvos);
-      const usuario = lista.find((u) => u.id === id);
-      if (usuario) setValores(usuario);
+    async function carregarUsuario() {
+      try {
+        const resp = await fetch(`${api}/usuario/${id}`);
+        if (!resp.ok) throw new Error("Erro ao buscar usuário");
+        const dados = await resp.json();
+        setValores(dados);
+      } catch (error) {
+        console.error(error);
+        alert("Erro ao carregar dados do usuário.");
+      }
     }
+
+    if (id) carregarUsuario();
   }, [id]);
 
-  const handleSubmit = (dados: Record<string, string>) => {
-    const usuariosSalvos = localStorage.getItem("usuarios");
-    if (!usuariosSalvos) return;
+  const handleSubmit = async (dados: Record<string, string>) => {
+    try {
+      const resp = await fetch(`${api}/usuario/${id}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(dados),
+      });
 
-    const lista: Usuario[] = JSON.parse(usuariosSalvos);
-    const atualizados = lista.map((u) => (u.id === id ? dados : u));
+      if (!resp.ok) throw new Error("Erro ao atualizar cadastro");
 
-    localStorage.setItem("usuarios", JSON.stringify(atualizados));
-    alert("Cadastro atualizado com sucesso!");
-    navigate("/cadastros");
+      alert("Cadastro atualizado com sucesso!");
+      navigate("/cadastros");
+    } catch (error) {
+      console.error(error);
+      alert("Erro ao salvar as alterações.");
+    }
   };
 
   return (
@@ -43,10 +60,30 @@ export default function EditarCadastros() {
         titulo="Atualize os dados do cadastro"
         campos={[
           { label: "Nome", name: "nome", placeholder: "Digite o nome", required: true },
+          { label: "Celular", name: "celular", placeholder: "Digite o número de celular", required: true },
           { label: "CPF", name: "cpf", placeholder: "Digite o CPF", required: true },
           { label: "Email", name: "email", type: "email", placeholder: "Digite o email", required: true },
           { label: "Senha", name: "senha", type: "password", placeholder: "Digite a senha", required: true },
-          { label: "Tipo", name: "tipo", type: "select", placeholder: "medico / paciente", required: true },
+          { 
+            label: "Tipo de usuário", 
+            name: "tipoUsuario", 
+            type: "select", 
+            options: [
+              { value: "PACIENTE", label: "Paciente" },
+              { value: "MEDICO", label: "Médico" }
+            ],
+            required: true,
+          },
+          { 
+            label: "Sexo", 
+            name: "sexo", 
+            type: "select", 
+            options: [
+              { value: "FEMININO", label: "Feminino" },
+              { value: "MASCULINO", label: "Masculino" }
+            ],
+            required: true,
+          },
         ]}
         valores={valores}
         setValores={setValores}

@@ -1,18 +1,24 @@
 import React from "react";
 
+interface Opcao {
+  value: string;
+  label: string;
+}
+
 interface CampoFormulario {
   label: string;
   name: string;
   type?: string;
   placeholder?: string;
   required?: boolean;
+  options?: Opcao[]; 
 }
 
 interface FormularioProps {
   titulo?: string;
   campos: CampoFormulario[];
   botaoTexto?: string;
-  valores: Record<string, string>; 
+  valores: Record<string, string>;
   setValores: (novosValores: Record<string, string>) => void;
   onSubmit: (dados: Record<string, string>) => void;
 }
@@ -40,22 +46,21 @@ const Formulario: React.FC<FormularioProps> = ({
       {titulo && <h2>{titulo}</h2>}
 
       {campos.map((campo) => (
-        <div key={campo.name}>
+        <div key={campo.name} style={{ marginBottom: "1rem" }}>
           <label>{campo.label}</label>
-          {campo.type === "select" ? (
+          {campo.type === "select" && campo.options ? (
             <select
               name={campo.name}
               value={valores[campo.name] || ""}
               onChange={handleChange}
               required={campo.required}
             >
-              {campo.placeholder
-                ?.split("/")
-                .map((opcao) => (
-                  <option key={opcao} value={opcao.trim()}>
-                    {opcao.trim()}
-                  </option>
-                ))}
+              <option value="">Selecione...</option>
+              {campo.options.map((opt) => (
+                <option key={opt.value} value={opt.value}>
+                  {opt.label}
+                </option>
+              ))}
             </select>
           ) : (
             <input

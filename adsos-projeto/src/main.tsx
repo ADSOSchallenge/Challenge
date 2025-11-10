@@ -30,20 +30,20 @@ const router = createBrowserRouter([
       { path: "faq", element: <Faq /> },
       { path: "contato", element: <Contato /> },
       { path: "tutorial", element: <Tutorial /> },
-      { path: "login", element: <Login /> }, 
-      { path: "cadastro", element: <Cadastro /> }, 
+      { path: "login", element: <Login /> },
+      { path: "cadastro", element: <Cadastro /> },
       { path: "sobre", element: <Sobre /> },
-    ],
-  },
-  {
-    path: "/app",
-    element: <Logado />, 
-    children: [
-      { path: "agenda", element: <Agenda /> },
-      { path: "agendamento", element: <Agendamento /> },
-      { path: "feedback", element: <Feedback /> },
-      { path: "editar/:id", element: <EditarCadastros /> },
-      { path: "deletar/:id", element: <DeletarCadastro /> },
+      {
+        path: "app",
+        element: <Logado />,
+        children: [
+          { path: "agenda", element: <Agenda /> },
+          { path: "agendamento", element: <Agendamento /> },
+          { path: "feedback", element: <Feedback /> },
+          { path: "editar/:id", element: <EditarCadastros /> },
+          { path: "deletar/:id", element: <DeletarCadastro /> },
+        ],
+      },
     ],
   },
 ]);

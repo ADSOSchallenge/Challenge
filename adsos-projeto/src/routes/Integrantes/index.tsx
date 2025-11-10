@@ -57,7 +57,7 @@ export default function Integrantes() {
           src={amandhaImg}
           alt="Foto da Amandha Yumi"
         />
-        <p>RM: 563549</p>
+        <p>RM: 563549 - 1TDSPJ</p>
         <p>
           💻 Olá! Eu sou a Amandha Yumi, tenho 19 anos e sou estudante de
           Análise e Desenvolvimento de Sistemas. Desde que comecei na área de
@@ -91,7 +91,7 @@ export default function Integrantes() {
           src={giovannaImg}
           alt="Foto da Giovanna Bardella"
         />
-        <p>RM: 561439</p>
+        <p>RM: 561439 - 1TDSPJ </p>
         <p>
           💻 Olá! Sou a Giovanna Bardella, uma das integrantes do grupo ADSOS.
           Tenho 22 anos e sou estudante de Análise e Desenvolvimento de Sistemas
@@ -124,7 +124,7 @@ export default function Integrantes() {
           src={erickImg}
           alt="Foto do Erick Takeshi"
         />
-        <p>RM: 566059</p>
+        <p>RM: 566059 - 1TDSPJ</p>
         <p>
           💻 Olá! Sou o Erick Takeshi, um dos integrantes do grupo ADSOS. Tenho
           18 anos e sou aluno da FIAP, estudando Análise e Desenvolvimento de
