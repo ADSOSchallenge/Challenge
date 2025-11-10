@@ -26,7 +26,12 @@ export default function Agendamento() {
   });
 
   const campos = [
-    { label: "CPF do paciente", name: "cpfPaciente", placeholder: "Digite o CPF do paciente...", required: true },
+    { 
+      label: "CPF do paciente", 
+      name: "cpfPaciente", 
+      placeholder: "Digite o CPF do paciente...", 
+      required: true 
+    },
     { 
       label: "Médico", 
       name: "medicoId", 
@@ -39,32 +44,37 @@ export default function Agendamento() {
     },
     { label: "Data", name: "dataConsulta", type: "date", required: true },
     { label: "Horário", name: "horaConsulta", type: "time", required: true },
-    { label: "Especialização", name: "especializacao", placeholder: "Digite a especialização da consulta...", required: true },
+    { 
+      label: "Especialização", 
+      name: "especializacao", 
+      placeholder: "Digite a especialização da consulta...", 
+      required: true 
+    },
   ];
 
   const handleSubmit = async (dados: Record<string, string>) => {
-    const medicoSelecionado = medicos.find((m) => m.id === dados.medicoId);
+    const idPaciente = 5;
+
+    const dataHora = `${dados.dataConsulta}T${dados.horaConsulta}:00`;
 
     const novaConsulta = {
-      cpfPaciente: dados.cpfPaciente,
-      medico: medicoSelecionado?.nome || "",
-      especialidade: medicoSelecionado?.especialidade || dados.especializacao,
-      data: dados.dataConsulta,
-      hora: dados.horaConsulta,
+      idMedico: parseInt(dados.medicoId),
+      idPaciente,
+      data: dataHora,
+      descricao: dados.especializacao || "Consulta de retorno",
     };
 
     try {
-      const resp = await fetch(`${api}/consultas`, {
+      const resp = await fetch(`${api}/consulta`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(novaConsulta),
       });
 
       if (!resp.ok) throw new Error("Erro ao agendar consulta");
-      const consultasExistentes: any[] = JSON.parse(localStorage.getItem("consultas") || "[]");
-      localStorage.setItem("consultas", JSON.stringify([...consultasExistentes, novaConsulta]));
 
       alert("Consulta agendada com sucesso!");
+
       setValores({
         cpfPaciente: "",
         medicoId: "",
@@ -80,19 +90,17 @@ export default function Agendamento() {
 
   return (
     <main>
-      <div>
-        <section>
-          <h1>Agendar Consulta</h1>
-          <Formulario
-            titulo="Preencha os dados da consulta"
-            campos={campos}
-            valores={valores}
-            setValores={setValores}
-            onSubmit={handleSubmit}
-            botaoTexto="Agendar"
-          />
-        </section>
-      </div>
+      <section>
+        <h1>Agendar Consulta</h1>
+        <Formulario
+          titulo="Preencha os dados da consulta"
+          campos={campos}
+          valores={valores}
+          setValores={setValores}
+          onSubmit={handleSubmit}
+          botaoTexto="Agendar"
+        />
+      </section>
     </main>
   );
 }

@@ -15,7 +15,7 @@ export default function Login() {
 
   const handleSubmit = async (dados: { cpf: string; senha: string }) => {
     try {
-      const resp = await fetch(`${API}/paciente/login`, {
+      const resp = await fetch(`${API}/usuario/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(dados),
@@ -30,11 +30,11 @@ export default function Login() {
       const data: Usuario = await resp.json();
       alert(`Bem-vindo(a), ${data.nome || "usuário"}!`);
       localStorage.setItem("usuarioLogado", JSON.stringify(data));
-
-      navigate("/app");
+      if (data.tipoUsuario === "MEDICO") navigate("/dashboard");
+      else navigate("/app");
     } catch (error) {
       console.error("Erro no login:", error);
-      alert("⚠️ Não foi possível realizar o login. Tente novamente mais tarde.");
+      alert("Não foi possível realizar o login. Tente novamente mais tarde.");
     }
   };
 
@@ -65,8 +65,7 @@ export default function Login() {
       />
 
       <p>
-        Ainda não tem uma conta?{" "}
-        <Link to="/cadastro">Cadastre-se aqui</Link>
+        Ainda não tem uma conta? <Link to="/cadastro">Cadastre-se aqui</Link>
       </p>
     </main>
   );

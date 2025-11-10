@@ -11,15 +11,17 @@ export default function Cadastro() {
   const [valores, setValores] = useState<Usuario>({
     id: Date.now().toString(),
     nome: "",
+    celular: "",
     cpf: "",
     email: "",
     senha: "",
-    tipo: "",
+    tipoUsuario: "",
+    sexo: "",
   });
 
   const handleSubmit = async (dados: Record<string, string>) => {
     try {
-      const resp = await fetch(`${API}/paciente/cadastro`, {
+      const resp = await fetch(`${API}/usuario`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(dados),
@@ -49,10 +51,30 @@ export default function Cadastro() {
         titulo="Cadastro de Usuário"
         campos={[
           { label: "Nome", name: "nome", placeholder: "Digite seu nome", required: true },
+          { label: "Celular", name: "celular", placeholder: "Digite seu número de celular", required: true },
           { label: "CPF", name: "cpf", placeholder: "Digite seu CPF", required: true },
           { label: "Email", name: "email", type: "email", placeholder: "Digite seu email", required: true },
           { label: "Senha", name: "senha", type: "password", placeholder: "Digite sua senha", required: true },
-          { label: "Tipo", name: "tipo", type: "select", placeholder: "medico / paciente", required: true },
+          { 
+            label: "Tipo de usuário", 
+            name: "tipoUsuario", 
+            type: "select", 
+            options: [
+              { value: "PACIENTE", label: "Paciente" },
+              { value: "MEDICO", label: "Médico" }
+            ],
+            required: true,
+          },
+          { 
+            label: "Sexo", 
+            name: "sexo", 
+            type: "select", 
+            options: [
+              { value: "FEMININO", label: "Feminino" },
+              { value: "MASCULINO", label: "Masculino" }
+            ],
+            required: true,
+          },
         ]}
         valores={valores}
         setValores={setValores}

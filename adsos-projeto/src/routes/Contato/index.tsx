@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 
 const API = import.meta.env.VITE_API_URL;
+
 export default function Contato() {
   useEffect(() => {
     document.title = "Contato";
@@ -10,10 +11,10 @@ export default function Contato() {
     event.preventDefault();
 
     const formData = new FormData(event.currentTarget);
-    const payload = {
-      nome: formData.get("nome"),
-      email: formData.get("email"),
-      pergunta: formData.get("pergunta"),
+    const payload: { nome: string; email: string; pergunta: string } = {
+      nome: formData.get("nome") as string,
+      email: formData.get("email") as string,
+      pergunta: formData.get("pergunta") as string,
     };
 
     try {
@@ -29,7 +30,7 @@ export default function Contato() {
         return;
       }
 
-      alert("Mensagem enviada com sucesso!");
+      alert(" Mensagem enviada com sucesso!");
       event.currentTarget.reset(); 
     } catch (error) {
       console.error("Erro ao enviar:", error);
@@ -39,14 +40,13 @@ export default function Contato() {
 
   return (
     <main>
-      <div>
-        <section>
-          <h1>Formulário para contato</h1>
-          <p>
-            Está com alguma dúvida específica? Entre em contato com a gente ou
-            preencha o formulário abaixo para que possamos retornar o mais breve possível.
-          </p>
-        </section>
+      <section>
+        <h1>Formulário para contato</h1>
+        <p>
+          Está com alguma dúvida específica? Entre em contato com a gente ou
+          preencha o formulário abaixo para que possamos retornar o mais breve possível.
+        </p>
+
         <form onSubmit={handleSubmit}>
           <fieldset>
             <legend>Dados Pessoais:</legend>
@@ -99,7 +99,7 @@ export default function Contato() {
             <a href="mailto:adsoschallenge@gmail.com">adsoschallenge@gmail.com</a>.
           </p>
         </section>
-      </div>
+      </section>
     </main>
   );
 }
