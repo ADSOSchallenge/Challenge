@@ -26,27 +26,28 @@ Além disso, o projeto realiza **integração com uma API Java** publicada remot
 - ♿ **Design Responsivo e Acessível:** adaptado para diferentes dispositivos, priorizando usabilidade e inclusão.
 
 ---
-
-## 📁 Estrutura do Projeto
+## 📂 Estrutura do Projeto
 
 A aplicação foi **reestruturada para o framework React + Vite + TypeScript**, garantindo modularidade e organização do código.
 
+```bash
 📦 adsos-projeto/
-┣ 📂 public/ # Arquivos públicos
-┣ 📂 src/
-┃ ┣ 📂 assets/ # Imagens, ícones e CSS global
-┃ ┣ 📂 components/ # Componentes reutilizáveis (Cabecalho, Menu, Footer)
-┃ ┣ 📂 routes/ # Páginas e rotas principais
-┃ ┣ 📂 types/ # Tipagens TypeScript
-┃ ┣ 📜 App.tsx # Controle principal das rotas
-┃ ┣ 📜 main.tsx # Renderização do App no DOM
-┃ ┣ 📜 global.css # Estilos globais (Tailwind + customizações)
-┃ ┗ 📜 declarations.ts # Declarações auxiliares de tipos
-┣ 📜 .env # Variáveis de ambiente (URL da API, etc)
-┣ 📜 index.html # Estrutura base da aplicação
-┣ 📜 package.json # Dependências e scripts
-┣ 📜 vite.config.ts # Configuração do Vite
-┗ 📜 README.md
+├── public/
+├── src/
+│   ├── 📂 assets/          # Imagens, ícones e CSS global
+│   ├── 📂 components/      # Componentes reutilizáveis (Cabeçalho, Menu, Footer e Formulário)
+│   ├── 📂 routes/          # Páginas e rotas principais
+│   ├── 📂 types/           # Tipagens TypeScript
+│   ├── 📜 App.tsx          # Controle principal das rotas
+│   ├── 📜 main.tsx         # Renderização do App no DOM
+│   ├── 📜 global.css       # Estilos globais (Tailwind + customizações)
+│   ├── 📜 declarations.ts  # Declarações auxiliares de tipos
+│   ├── 📜 .env             # Variáveis de ambiente (URL da API)
+├── 📜 index.html           # Estrutura base da aplicação
+├── 📜 package.json         # Dependências e scripts
+├── 📜 vite.config.ts       # Configuração do Vite
+└── 📜 README.md
+```
 
 ---
 
