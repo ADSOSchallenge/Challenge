@@ -73,8 +73,14 @@ https://github.com/ADSOSchallenge/Challenge.git
 ---
 
 ## 🔗 Link do Youtube
-https://youtu.be/ok82Sb_a9EI?si=76O0cZnWkM9Yy6xG
+https://youtu.be/hQCe3Ox3KmI?si=ZcpLb9BeC8NFHi5Q
 
+---
+
+## 🔗 Link do vercel
+https://youtu.be/hQCe3Ox3KmI?si=ZcpLb9BeC8NFHi5Q
+
+---
 ## 🏁 Conclusão
 
 O projeto **ADSOS - Hospital das Clínicas** foi completamente **reconstruído em React, Vite e TypeScript**, integrando-se a uma **API Java remota** e **implantado com sucesso na Vercel**.  
