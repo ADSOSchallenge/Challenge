@@ -78,7 +78,7 @@ https://youtu.be/hQCe3Ox3KmI?si=ZcpLb9BeC8NFHi5Q
 ---
 
 ## 🔗 Link do vercel
-https://youtu.be/hQCe3Ox3KmI?si=ZcpLb9BeC8NFHi5Q
+https://challenge-git-main-giovanna-bardella-gomes-projects.vercel.app/
 
 ---
 ## 🏁 Conclusão
