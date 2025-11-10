@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Formulario from "../../components/Formulario/Formulario";
 
+const API = import.meta.env.VITE_API_URL;
+
 export default function Feedback() {
   const [valores, setValores] = useState({
     nome: "",
@@ -16,16 +18,31 @@ export default function Feedback() {
     { label: "Comentário", name: "comentario", placeholder: "Digite seu comentário..." },
   ];
 
-  const handleSubmit = (dados: Record<string, string>) => {
-    console.log("Feedback enviado:", dados);
-    alert("Obrigado pelo seu feedback!");
+  const handleSubmit = async (dados: Record<string, string>) => {
+    try {
+      const resp = await fetch(`${API}/feedback`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(dados),
+      });
 
-    setValores({
-      nome: "",
-      cpf: "",
-      nota: "",
-      comentario: "",
-    });
+      if (!resp.ok) {
+        const erro = await resp.text();
+        alert(`Erro ao enviar feedback: ${erro}`);
+        return;
+      }
+
+      alert(" Obrigado pelo seu feedback!");
+      setValores({
+        nome: "",
+        cpf: "",
+        nota: "",
+        comentario: "",
+      });
+    } catch (error) {
+      console.error("Erro ao enviar feedback:", error);
+      alert("⚠️ Ocorreu um erro ao enviar seu feedback. Tente novamente mais tarde.");
+    }
   };
 
   return (
@@ -34,8 +51,10 @@ export default function Feedback() {
         <section>
           <h1>Avaliação de satisfação</h1>
           <p>
-            Sua opinião é muito importante para a evolução do nosso sistema. Deixe aqui seu comentário e sua nota para que possamos melhorar continuamente.
+            Sua opinião é muito importante para a evolução do nosso sistema.
+            Deixe aqui seu comentário e sua nota para que possamos melhorar continuamente.
           </p>
+
           <Formulario
             titulo="Formulário de avaliação"
             campos={campos}

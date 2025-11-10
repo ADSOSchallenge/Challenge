@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Formulario from "../../components/Formulario/Formulario";
 
+const api = import.meta.env.VITE_API_URL;
+
 type Medico = {
   id: string;
   nome: string;
@@ -17,7 +19,7 @@ export default function Agendamento() {
 
   const [valores, setValores] = useState({
     cpfPaciente: "",
-    cpfMedico: "",
+    medicoId: "",
     dataConsulta: "",
     horaConsulta: "",
     especializacao: "",
@@ -27,43 +29,60 @@ export default function Agendamento() {
     { label: "CPF do paciente", name: "cpfPaciente", placeholder: "Digite o CPF do paciente...", required: true },
     { 
       label: "Médico", 
-      name: "cpfMedico", 
+      name: "medicoId", 
       type: "select", 
-      placeholder: medicos.map(m => m.nome + " - " + m.especialidade).join("/"), 
-      required: true 
+      options: medicos.map((m) => ({
+        value: m.id,
+        label: `${m.nome} - ${m.especialidade}`,
+      })),
+      required: true,
     },
     { label: "Data", name: "dataConsulta", type: "date", required: true },
     { label: "Horário", name: "horaConsulta", type: "time", required: true },
     { label: "Especialização", name: "especializacao", placeholder: "Digite a especialização da consulta...", required: true },
   ];
 
-  const handleSubmit = (dados: Record<string, string>) => {
-    const consultasExistentes: any[] = JSON.parse(localStorage.getItem("consultas") || "[]");
+  const handleSubmit = async (dados: Record<string, string>) => {
+    const medicoSelecionado = medicos.find((m) => m.id === dados.medicoId);
 
     const novaConsulta = {
-      id: consultasExistentes.length + 1,
+      cpfPaciente: dados.cpfPaciente,
+      medico: medicoSelecionado?.nome || "",
+      especialidade: medicoSelecionado?.especialidade || dados.especializacao,
       data: dados.dataConsulta,
       hora: dados.horaConsulta,
-      medico: medicos.find(m => m.nome + " - " + m.especialidade === dados.cpfMedico)?.nome || "",
-      especialidade: dados.especializacao,
     };
 
-    localStorage.setItem("consultas", JSON.stringify([...consultasExistentes, novaConsulta]));
-    alert("Consulta agendada com sucesso!");
+    try {
+      const resp = await fetch(`${api}/consultas`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(novaConsulta),
+      });
 
-    setValores({
-      cpfPaciente: "",
-      cpfMedico: "",
-      dataConsulta: "",
-      horaConsulta: "",
-      especializacao: "",
-    });
+      if (!resp.ok) throw new Error("Erro ao agendar consulta");
+      const consultasExistentes: any[] = JSON.parse(localStorage.getItem("consultas") || "[]");
+      localStorage.setItem("consultas", JSON.stringify([...consultasExistentes, novaConsulta]));
+
+      alert("Consulta agendada com sucesso!");
+      setValores({
+        cpfPaciente: "",
+        medicoId: "",
+        dataConsulta: "",
+        horaConsulta: "",
+        especializacao: "",
+      });
+    } catch (error) {
+      console.error(error);
+      alert("Erro ao agendar consulta. Tente novamente.");
+    }
   };
 
   return (
     <main>
       <div>
         <section>
+          <h1>Agendar Consulta</h1>
           <Formulario
             titulo="Preencha os dados da consulta"
             campos={campos}

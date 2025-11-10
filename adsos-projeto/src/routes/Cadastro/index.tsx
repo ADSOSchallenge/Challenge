@@ -3,8 +3,11 @@ import { Link, useNavigate } from "react-router-dom";
 import Formulario from "../../components/Formulario/Formulario";
 import type { Usuario } from "../../types/Usuario";
 
+const API = import.meta.env.VITE_API_URL; 
+
 export default function Cadastro() {
   const navigate = useNavigate();
+
   const [valores, setValores] = useState<Usuario>({
     id: Date.now().toString(),
     nome: "",
@@ -14,21 +17,29 @@ export default function Cadastro() {
     tipo: "",
   });
 
-  const handleSubmit = (dados: Record<string, string>) => {
-    const usuariosSalvos = localStorage.getItem("usuarios");
-    const lista: Usuario[] = usuariosSalvos ? JSON.parse(usuariosSalvos) : [];
+  const handleSubmit = async (dados: Record<string, string>) => {
+    try {
+      const resp = await fetch(`${API}/paciente/cadastro`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(dados),
+      });
 
-    if (lista.find((u) => u.email === dados.email)) {
-      alert("E-mail já cadastrado!");
-      return;
+      if (!resp.ok) {
+        const erro = await resp.text();
+        alert(`Erro no cadastro: ${erro}`);
+        return;
+      }
+
+      const data = await resp.json();
+      alert("Cadastro realizado com sucesso!");
+      localStorage.setItem("usuarioLogado", JSON.stringify(data));
+
+      navigate("/login");
+    } catch (error) {
+      console.error("Erro ao cadastrar:", error);
+      alert("Não foi possível realizar o cadastro. Tente novamente mais tarde.");
     }
-
-    lista.push(dados as Usuario);
-    localStorage.setItem("usuarios", JSON.stringify(lista));
-    localStorage.setItem("usuarioLogado", JSON.stringify(dados));
-
-    alert("Cadastro realizado com sucesso!");
-    navigate("/login");
   };
 
   return (
@@ -49,7 +60,9 @@ export default function Cadastro() {
         onSubmit={handleSubmit}
       />
 
-      <p>Já tem uma conta? <Link to="/login">Faça Login</Link></p>
+      <p>
+        Já tem uma conta? <Link to="/login">Faça Login</Link>
+      </p>
     </main>
   );
 }
